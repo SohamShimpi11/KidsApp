@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.scene.control.Button?>
+<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.kidsapplication.KidsController">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+    <StackPane fx:id="mainStackPane">
+        <!-- Header Section -->
+        <VBox fx:id="homePane" spacing="20">
+            <HBox style="-fx-background-color: #a944eb; -fx-background-radius: 15px;
+             -fx-padding: 10px; -fx-alignment: center-left; -fx-spacing: 10px;">
+
+                <ImageView fx:id="logoImageView" fitHeight="40" fitWidth="40"/>
+<!--                <Label text="Suyash" style="-fx-text-fill: white; -fx-font-size: 18px;"/>-->
+                <Label fx:id="levelLabel" text="Level 1" style="-fx-text-fill: white; -fx-font-size: 18px;"/>
+
+
+                <ProgressBar fx:id="progressBar" prefWidth="150"/>
+                <Label fx:id="pointsLabel" text="65 / 480" style="-fx-text-fill: white;"/>
+
+                <Region HBox.hgrow="ALWAYS"/>
+                <Label text="⭐ 00" style="-fx-text-fill: white; -fx-font-size: 16px;"/>
+
+            </HBox>
+
+            <!-- Welcome Text -->
+            <Label fx:id="welcomeText" text="GAMES"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <Button text="+50 Points" onAction="#addPoints" style="-fx-background-color: #ffffff; -fx-text-fill: black; -fx-font-size: 12px; -fx-padding: 5px;"/>
+            <!-- Games section -->
+            <VBox spacing="10">
+
+                <!-- Maths game -->
+                <HBox style="-fx-background-color: #D742A8; -fx-padding: 15px; -fx-background-radius: 15px; -fx-alignment: center-left;" spacing="15">
+                    <VBox alignment="CENTER_LEFT">
+                        <Label text="MATHS" style="-fx-font-size: 20px; -fx-text-fill: white;"/>
+                        <Button fx:id="PLAYMATHS" text="PLAY" style="-fx-background-color: white; -fx-text-fill: black;" onAction="#showMaths" />
+                    </VBox>
+
+                    <Region HBox.hgrow="ALWAYS"/>  <!-- Pushes the image to the right -->
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="Age 5 - 8" style="-fx-font-size: 0px; -fx-text-fill: white;"/>
+                        <ImageView fx:id="imageMaths1" fitHeight="80" fitWidth="80" preserveRatio="true"/>
+                    </VBox>
+                </HBox>
+                <!-- Riddle -->
+                <HBox style="-fx-background-color: #0099ff; -fx-padding: 15px; -fx-background-radius: 15px; -fx-alignment: center-left;" spacing="15">
+                    <VBox alignment="CENTER_LEFT">
+                        <Label text="RIDDLE" style="-fx-font-size: 20px; -fx-text-fill: white;"/>
+                        <Button fx:id="PLAYRIDDLE" text="PLAY" style="-fx-background-color: white; -fx-text-fill: black;" onAction="#showRiddle"/>
+                    </VBox>
+
+                    <Region HBox.hgrow="ALWAYS"/>  <!-- Pushes the image to the right -->
+                    <VBox alignment="CENTER" spacing="5" >
+                        <Label text="Age 5 - 12" style="-fx-font-size: 0px; -fx-text-fill: white;"/>
+                        <ImageView fx:id="imageView" fitHeight="80" fitWidth="80" preserveRatio="true"/>
+                    </VBox>
+                </HBox>
+
+                <!-- 2048 -->
+                <HBox style="-fx-background-color: #ffcc33; -fx-padding: 15px; -fx-background-radius: 15px; -fx-alignment: center-left;" spacing="15">
+                    <VBox alignment="CENTER_LEFT">
+                        <Label text="2048" style="-fx-font-size: 20px; -fx-text-fill: white;"/>
+                        <Button fx:id="PLAY2048" text="PLAY" style="-fx-background-color: white; -fx-text-fill: black;" onAction="#show2048"/>
+                    </VBox>
+
+                    <Region HBox.hgrow="ALWAYS"/>  <!-- Pushes the image to the right -->
+                    <VBox spacing="5" alignment="CENTER" >
+                        <Label text="Age 5 - 12" style="-fx-font-size: 0px; -fx-text-fill: white;"/>
+                        <ImageView fx:id="image2048" fitHeight="80" fitWidth="80" preserveRatio="true"/>
+                    </VBox>
+                </HBox>
+                <!-- Reading -->
+                <HBox style="-fx-background-color: #00cc99; -fx-padding: 15px; -fx-background-radius: 15px; -fx-alignment: center-left;" spacing="15">
+                    <VBox alignment="CENTER_LEFT">
+                        <Label text="READING" style="-fx-font-size: 20px; -fx-text-fill: white;"/>
+                        <Button fx:id="PLAYR" text="PLAY" style="-fx-background-color: white; -fx-text-fill: black;" onAction="#showReading"/>
+                    </VBox>
+
+                    <Region HBox.hgrow="ALWAYS"/>  <!-- Pushes the image to the right -->
+                    <VBox alignment="CENTER" spacing="5">
+                        <Label text="Age 5 - 12" style="-fx-font-size: 0px; -fx-text-fill: white;"/>
+                        <ImageView fx:id="imageReading" fitHeight="80" fitWidth="80" preserveRatio="true"/>
+                    </VBox>
+                </HBox>
+
+            </VBox>
+        </VBox>
+
+        <VBox fx:id="riddleSection" alignment="CENTER" spacing="20" visible="false">
+
+            <VBox alignment="CENTER" spacing="20" style="-fx-padding: 20px; -fx-background-radius: 15px;">
+
+                <!-- Score Box -->
+                <HBox alignment="CENTER" spacing="10" style="-fx-background-color: #ffcc33; -fx-padding: 10px; -fx-background-radius: 10px;">
+                    <Label text="Score:" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <Label fx:id="scoreLabel" text="0" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                </HBox>
+
+                <!-- Question Box (Fixed size) -->
+                <HBox fx:id="questionBox"  alignment="CENTER" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2px; -fx-padding: 15px; -fx-border-radius: 10px; -fx-pref-width: 500px; -fx-pref-height: 200px;">
+                    <Label fx:id="riddleQuestion" text="Here will be the riddle question" wrapText="true" maxWidth="480"
+                           style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                </HBox>
+
+                <!-- Options Section -->
+                <GridPane fx:id="answerGrid" alignment="CENTER" hgap="7" vgap="15" style="-fx-padding: 20px 5px ;">
+
+                    <!-- Option A (Right) -->
+                    <Label text="B-" GridPane.columnIndex="2" GridPane.rowIndex="0"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <Button fx:id="optionA" text="Option 1" onAction="#checkAnswer"
+                            GridPane.columnIndex="1" GridPane.rowIndex="0"
+                            style="-fx-font-size: 12px; -fx-background-color: #ff6666; -fx-text-fill: black;
+                   -fx-background-radius: 15px; -fx-pref-width: 150px; -fx-pref-height: 40px;"/>
+
+
+                    <!-- Option B (Center Start) -->
+                    <Label text="A-" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <Button fx:id="optionB" text="Option 2" onAction="#checkAnswer"
+                            GridPane.columnIndex="3" GridPane.rowIndex="0"
+                            style="-fx-font-size: 12px; -fx-background-color: #66ccff; -fx-text-fill: black;
+                   -fx-background-radius: 15px; -fx-pref-width: 150px; -fx-pref-height: 40px;"/>
+
+                    <!-- Option C (Right) -->
+                    <Label text="D-" GridPane.columnIndex="2" GridPane.rowIndex="1"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <Button fx:id="optionC" text="Option 3" onAction="#checkAnswer"
+                            GridPane.columnIndex="1" GridPane.rowIndex="1"
+                            style="-fx-font-size: 12px; -fx-background-color: #ffcc66; -fx-text-fill: black;
+                   -fx-background-radius: 15px; -fx-pref-width: 150px; -fx-pref-height: 40px;"/>
+
+                    <!-- Option D (Center Start) -->
+                    <Label text="C-" GridPane.columnIndex="0" GridPane.rowIndex="1"
+                           style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                    <Button fx:id="optionD" text="Option 4" onAction="#checkAnswer"
+                            GridPane.columnIndex="3" GridPane.rowIndex="1"
+                            style="-fx-font-size: 12px; -fx-background-color: #66ff66; -fx-text-fill: black;
+                   -fx-background-radius: 15px; -fx-pref-width: 150px; -fx-pref-height: 40px;"/>
+                </GridPane>
+                <Label fx:id="correctAnswerLabel" text="" style="-fx-font-size: 16px; -fx-text-fill: red;" />
+
+                <!-- Back Button -->
+                <Button text="Back to Home" onAction="#showHome"
+                        style="-fx-font-size: 16px; -fx-background-color: #ff6666; -fx-text-fill: white; -fx-background-radius: 10px;"/>
+            </VBox>
+        </VBox>
+
+        <!-- 2048 Section -->
+        <VBox fx:id="game2048Section" alignment="CENTER" spacing="20" visible="false">
+            <Label fx:id="scoreL" text="Score: 0" style="-fx-font-size: 20px;"/>
+            <Label fx:id="highScoreLabel" text="High Score: 0" style="-fx-font-size: 20px;"/>
+            <Pane fx:id="gamePane" minWidth="400" minHeight="400" maxWidth="400" maxHeight="400"/>
+            <Button text="Back to Home" onAction="#showHome"
+                    style="-fx-font-size: 16px; -fx-background-color: #ff6666; -fx-text-fill: white; -fx-background-radius: 10px;"/>
+        </VBox>
+
+        <!-- Maths Section -->
+        <VBox fx:id="mathsSection" alignment="CENTER" spacing="30" visible="false"
+              style="-fx-background-color: #E3F2FD; -fx-padding: 40px; -fx-alignment: center;">
+
+            <Label text="SELECT DIFFICULTY" style="-fx-font-size: 24px; -fx-text-fill: #333333; -fx-font-weight: bold;"/>
+
+            <!-- Easy Button -->
+            <Button text="EASY" fx:id="easyBtn" onAction="#showEasySection"
+                    style="-fx-font-size: 20px; -fx-pref-width: 250px; -fx-pref-height: 80px;
+                   -fx-background-color: #4CAF50; -fx-text-fill: white; -fx-background-radius: 15px;" />
+
+            <!-- Hard Button -->
+            <Button text="HARD" fx:id="hardBtn" onAction="#showHardSection"
+                    style="-fx-font-size: 20px; -fx-pref-width: 250px; -fx-pref-height: 80px;
+                   -fx-background-color: #D32F2F; -fx-text-fill: white; -fx-background-radius: 15px;"/>
+
+            <!-- Back to Home Button -->
+            <Button text="Back to Home" fx:id="backToHomeBtn" onAction="#showHome"
+                    style="-fx-font-size: 16px; -fx-background-color: #ff6666; -fx-text-fill: white; -fx-background-radius: 10px;"/>
+        </VBox>
+
+        <!-- Easy Section -->
+        <VBox fx:id="easySection" alignment="CENTER" spacing="10" visible="false"
+              style="-fx-background-color: #C8E6C9; -fx-padding: 20px; -fx-alignment: center;">
+
+            <!-- Score Box -->
+            <HBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #FFD700; -fx-padding: 10px; -fx-background-radius: 10px;">
+                <Label text="Score:" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                <Label fx:id="scoreLabel1" text="0" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            </HBox>
+            <VBox alignment="CENTER" spacing="2">
+            <!-- Game Description -->
+                <Label text="Solve the math problems and earn points!"
+                        maxWidth="400"
+                       style="-fx-font-size: 16px; -fx-text-fill: #333333; -fx-font-style: italic;"/>
+                <Label text="Get 5 correct answers in a row for bonus points!"
+                       maxWidth="400"
+                       style="-fx-font-size: 16px; -fx-text-fill: #333333; -fx-font-style: italic;"/>
+            </VBox>
+            <VBox fx:id="questionBox1" alignment="CENTER_LEFT" spacing="10"
+                  style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-color: black; -fx-border-width: 2px;
+                 -fx-padding: 20px; -fx-border-radius: 15px; -fx-pref-width: 300px; -fx-pref-height: 150px;">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <ImageView fx:id="operationImage" fitWidth="40" fitHeight="40"/>
+                    <VBox alignment="CENTER_RIGHT">
+                        <Label fx:id="firstNumberLabel" style="-fx-font-size: 35px; -fx-font-weight: bold;"/>
+                        <Label fx:id="secondNumberLabel" style="-fx-font-size: 35px; -fx-font-weight: bold;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <TextField fx:id="answerInput" promptText="Enter your answer"
+                       style="-fx-font-size: 18px; -fx-pref-width: 200px; -fx-background-radius: 10px; -fx-text-alignment: center;"/>
+
+            <Button text="SUBMIT" onAction="#checkAnswer1"
+                    style="-fx-font-size: 18px; -fx-background-color: orange; -fx-text-fill: black; -fx-background-radius: 10px;"/>
+
+            <!-- Initially Hidden Result Label -->
+            <Label fx:id="resultLabel" text="" visible="false"
+                   style="-fx-font-size: 18px; -fx-text-fill: black; -fx-font-weight: bold;"/>
+
+            <Button text="Next Question" onAction="#generateNewQuestion" visible="false"
+                    fx:id="nextQuestionButton"
+                    style="-fx-font-size: 16px; -fx-background-color: #42A5F5; -fx-text-fill: white; -fx-background-radius: 10px;"/>
+
+            <Button text="Select Difficulty" onAction="#showMaths"
+                    style="-fx-font-size: 16px; -fx-background-color: #ff6666; -fx-text-fill: white; -fx-background-radius: 10px;"/>
+        </VBox>
+
+        <!-- Hard Section -->
+        <VBox fx:id="hardSection" alignment="CENTER" spacing="10" visible="false"
+              style="-fx-background-color: #FFCDD2; -fx-padding: 20px; -fx-alignment: center;">
+
+            <!-- Score Box -->
+            <HBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #FFD700; -fx-padding: 10px; -fx-background-radius: 10px;">
+                <Label text="Score:" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                <Label fx:id="scoreLabel2" text="0" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+            </HBox>
+
+            <!-- Game Description -->
+            <VBox alignment="CENTER" spacing="2">
+                <Label text="Solve the math problems and earn points!"
+                       maxWidth="400"
+                       style="-fx-font-size: 16px; -fx-text-fill: #333333; -fx-font-style: italic;"/>
+                <Label text="Get 5 correct answers in a row for bonus points!"
+                       maxWidth="400"
+                       style="-fx-font-size: 16px; -fx-text-fill: #333333; -fx-font-style: italic;"/>
+            </VBox>
+
+            <!-- Question Box -->
+            <VBox fx:id="questionBox2" alignment="CENTER_LEFT" spacing="10"
+                  style="-fx-background-color: white; -fx-background-radius: 15px; -fx-border-color: black; -fx-border-width: 2px;
+                 -fx-padding: 20px; -fx-border-radius: 15px; -fx-pref-width: 300px; -fx-pref-height: 150px;">
+                <HBox alignment="CENTER_LEFT" spacing="10">
+                    <ImageView fx:id="operationImage2" fitWidth="40" fitHeight="40"/>
+                    <VBox alignment="CENTER_RIGHT">
+                        <Label fx:id="firstNumberLabel2" style="-fx-font-size: 35px; -fx-font-weight: bold;"/>
+                        <Label fx:id="secondNumberLabel2" style="-fx-font-size: 35px; -fx-font-weight: bold;"/>
+                    </VBox>
+                </HBox>
+            </VBox>
+
+            <TextField fx:id="answerInput2" promptText="Enter your answer"
+                       style="-fx-font-size: 18px; -fx-pref-width: 200px; -fx-background-radius: 10px; -fx-text-alignment: center;"/>
+
+            <Button text="SUBMIT" onAction="#checkAnswer2"
+                    style="-fx-font-size: 18px; -fx-background-color: orange; -fx-text-fill: black; -fx-background-radius: 10px;"/>
+
+            <!-- Initially Hidden Result Label -->
+            <Label fx:id="resultLabel2" text="" visible="false"
+                   style="-fx-font-size: 14px; -fx-text-fill: black; -fx-font-weight: bold;"/>
+
+            <Button text="Next Question" onAction="#generateNewQuestion2" visible="false"
+                    fx:id="nextQuestionButton2"
+                    style="-fx-font-size: 16px; -fx-background-color: #42A5F5; -fx-text-fill: white; -fx-background-radius: 10px;"/>
+
+            <Button text="Select Difficulty" onAction="#showMaths"
+                    style="-fx-font-size: 16px; -fx-background-color: #ff6666; -fx-text-fill: white; -fx-background-radius: 10px;"/>
+        </VBox>
+
+        <!-- Reading Section -->
+        <VBox fx:id="readingSection" alignment="CENTER" spacing="20" visible="false" >
+            <!-- Age Selection Screen -->
+
+            <VBox fx:id="ageSelectionScreen" alignment="CENTER" spacing="20" >
+                <Label text="Choose Your Age Group" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+                <Button text="Ages 5 - 8"
+                        onMouseEntered="#enlargeButton" onMouseExited="#resetButton" onAction="#showreading5to8"
+                        style="-fx-font-size: 25px; -fx-background-color: #ffcc66; -fx-text-fill: black;
+               -fx-background-radius: 10px; -fx-pref-width: 299px; -fx-pref-height: 80px;"/>
+
+                <Button text="Ages 9 - 12"
+                        onMouseEntered="#enlargeButton" onMouseExited="#resetButton" onAction="#showReading9to12"
+                        style="-fx-font-size: 25px; -fx-background-color: #66ccff; -fx-text-fill: black;
+               -fx-background-radius: 10px; -fx-pref-width: 299px; -fx-pref-height: 80px;"/>
+
+                <Button text="Back to Home" onAction="#showHome"
+                        style="-fx-font-size: 18px; -fx-background-color: #ff6666; -fx-text-fill: white;
+               -fx-background-radius: 10px; -fx-pref-width: 220px; -fx-pref-height: 45px;"/>
+            </VBox>
+        </VBox>
+
+        <VBox fx:id="readingSection9to12" alignment="CENTER" spacing="20" style="-fx-padding: 20px; -fx-background-radius: 15px;" visible="false">
+
+            <!-- Reading Text Area -->
+            <VBox alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #FAF3E0; -fx-padding: 15px; -fx-border-color: #D3C3A3; -fx-border-width: 2px;">
+                <Label text="Read the following passage:" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                <TextArea fx:id="readingTextArea" wrapText="true" editable="false"
+                          style="-fx-font-size: 16px; -fx-background-color: transparent; -fx-border-color: #D3C3A3;
+                     -fx-font-family: 'Courier New'; -fx-line-spacing: 5px;"
+                          prefHeight="250" prefWidth="580">
+                    Once upon a time in a small village, there lived a young boy named Liam. He loved exploring the dense
+                    forest near his home, where he would often encounter small creatures and discover hidden trails.
+                    One day, while venturing deeper into the woods, he stumbled upon a mysterious cave.
+                    Curiosity got the best of him, and he decided to step inside. The cave was filled with glowing crystals,
+                    casting beautiful lights all around. Suddenly, he heard a voice echoing through the chamber.
+                    "Who dares enter the Cave of Wonders?" it said. Liam hesitated but replied bravely, "I am Liam,
+                    an explorer from the village." The voice chuckled and said, "Then prove your courage by solving my riddle..."
+                </TextArea>
+            </VBox>
+
+            <!-- Timer Section -->
+            <HBox alignment="CENTER" spacing="20">
+                <Label text="Time: " style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                <Label fx:id="timerLabel" text="00:00" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                <Button fx:id="startTimerButton" text="Start" onAction="#startReadingTimer"
+                        style="-fx-font-size: 16px; -fx-background-color: #66cc66; -fx-text-fill: white; -fx-background-radius: 10px;"/>
+                <Button fx:id="stopTimerButton" text="Stop" onAction="#stopReadingTimer"
+                        style="-fx-font-size: 16px; -fx-background-color: #ff6666; -fx-text-fill: white; -fx-background-radius: 10px;" visible="false"/>
+            </HBox>
+
+            <!-- MCQ Section (Initially Hidden) -->
+            <VBox fx:id="mcqSection" alignment="CENTER" spacing="20" visible="false" managed="false">
+
+                <!-- Score Box -->
+                <HBox alignment="CENTER" spacing="10" style="-fx-background-color: #ffcc33; -fx-padding: 10px; -fx-background-radius: 10px;">
+                    <Label text="Score:" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <Label fx:id="readingScoreLabel" text=" " style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                </HBox>
+
+                <!-- Question Box -->
+                <HBox fx:id="mcqQuestionBox" alignment="CENTER" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2px;
+                                                                    -fx-padding: 15px; -fx-border-radius: 10px; -fx-pref-width: 500px; -fx-pref-height: 250px;">
+                    <Label fx:id="mcqQuestionLabel" text="Question will appear here" wrapText="true" maxWidth="480"
+                           style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                </HBox>
+
+                <!-- Options Section -->
+                <GridPane fx:id="mcqAnswerGrid" alignment="CENTER" hgap="10" vgap="15" style="-fx-padding: 20px;">
+<!--                    <Label text="A-" GridPane.columnIndex="0" GridPane.rowIndex="0" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>-->
+                    <Button fx:id="mcqOptionA"  text="Option 1" onAction="#handleAnswerA"
+                            GridPane.columnIndex="1" GridPane.rowIndex="0"
+                            style="-fx-font-size: 14px; -fx-background-color: #ff6666; -fx-text-fill: black; -fx-background-radius: 15px; -fx-pref-width: 180px; -fx-pref-height: 40px;"/>
+
+<!--                    <Label text="B-" GridPane.columnIndex="2" GridPane.rowIndex="0" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>-->
+                    <Button fx:id="mcqOptionB" text="Option 2" onAction="#handleAnswerB"
+                            GridPane.columnIndex="3" GridPane.rowIndex="0"
+                            style="-fx-font-size: 14px; -fx-background-color: #66ccff; -fx-text-fill: black; -fx-background-radius: 15px; -fx-pref-width: 180px; -fx-pref-height: 40px;"/>
+
+<!--                    <Label text="C-" GridPane.columnIndex="0" GridPane.rowIndex="1" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>-->
+                    <Button fx:id="mcqOptionC" text="Option 3" onAction="#handleAnswerC"
+                            GridPane.columnIndex="1" GridPane.rowIndex="1"
+                            style="-fx-font-size: 14px; -fx-background-color: #ffcc66; -fx-text-fill: black; -fx-background-radius: 15px; -fx-pref-width: 180px; -fx-pref-height: 40px;"/>
+
+<!--                    <Label text="D-" GridPane.columnIndex="2" GridPane.rowIndex="1" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>-->
+                    <Button fx:id="mcqOptionD" text="Option 4" onAction="#handleAnswerD"
+                            GridPane.columnIndex="3" GridPane.rowIndex="1"
+                            style="-fx-font-size: 14px; -fx-background-color: #66ff66; -fx-text-fill: black; -fx-background-radius: 15px; -fx-pref-width: 180px; -fx-pref-height: 40px;"/>
+                </GridPane>
+
+                <!-- Back Button -->
+                <Button text="Back to Age Selection" onAction="#showagesection"
+                        style="-fx-font-size: 16px; -fx-background-color: #ff6666; -fx-text-fill: white; -fx-background-radius: 10px;"/>
+            </VBox>
+        </VBox>
+
+        <VBox fx:id="readingSection9to12Updated" alignment="CENTER" spacing="20" style="-fx-padding: 20px; -fx-background-radius: 15px;" visible="false">
+
+            <!-- Reading Text Area -->
+            <VBox fx:id="readingTextAreaContainerUpdated" alignment="CENTER" spacing="10"
+                  style="-fx-background-color: #FAF3E0; -fx-padding: 15px; -fx-border-color: #D3C3A3; -fx-border-width: 2px;">
+                <Label fx:id="readingPassageLabelUpdated" text="Read the following passage:" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+                <TextArea fx:id="readingTextAreaUpdated" wrapText="true" editable="false"
+                          style="-fx-font-size: 16px; -fx-background-color: transparent; -fx-border-color: #D3C3A3;
+             -fx-font-family: 'Courier New'; -fx-line-spacing: 5px;"
+                          prefHeight="250" prefWidth="580">
+                    Once upon a time in a small village, there lived a young boy named Liam. He loved exploring the dense
+                    forest near his home, where he would often encounter small creatures and discover hidden trails.
+                    One day, while venturing deeper into the woods, he stumbled upon a mysterious cave.
+                    Curiosity got the best of him, and he decided to step inside. The cave was filled with glowing crystals,
+                    casting beautiful lights all around. Suddenly, he heard a voice echoing through the chamber.
+                    "Who dares enter the Cave of Wonders?" it said. Liam hesitated but replied bravely, "I am Liam,
+                    an explorer from the village." The voice chuckled and said, "Then prove your courage by solving my riddle..."
+                </TextArea>
+            </VBox>
+
+            <!-- Timer Section -->
+            <HBox fx:id="timerSectionUpdated" alignment="CENTER" spacing="20">
+                <Label fx:id="timerLabelTextUpdated" text="Time: " style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                <Label fx:id="timerLabelUpdated" text="00:00" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                <Button fx:id="startTimerButtonUpdated" text="Start" onAction="#startReadingTimerUpdated"
+                        style="-fx-font-size: 16px; -fx-background-color: #66cc66; -fx-text-fill: white; -fx-background-radius: 10px;"/>
+                <Button fx:id="stopTimerButtonUpdated" text="Stop" onAction="#stopReadingTimerUpdated"
+                        style="-fx-font-size: 16px; -fx-background-color: #ff6666; -fx-text-fill: white; -fx-background-radius: 10px;" visible="false"/>
+            </HBox>
+
+            <!-- Fill in the Blanks Section (Initially Hidden) -->
+            <VBox fx:id="fillInTheBlanksSectionUpdated" alignment="CENTER" spacing="20" visible="false">
+
+                <!-- Score Box -->
+                <HBox fx:id="fillInScoreBoxUpdated" alignment="CENTER" spacing="10" style="-fx-background-color: #ffcc33; -fx-padding: 10px; -fx-background-radius: 10px;">
+                    <Label fx:id="fillInScoreLabelTextUpdated" text="Score:" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                    <Label fx:id="fillInScoreLabelUpdated" text="0" style="-fx-font-size: 20px; -fx-font-weight: bold;"/>
+                </HBox>
+
+                <!-- Question Box -->
+                <HBox fx:id="fillInQuestionBoxUpdated" alignment="CENTER" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 2px;
+                                                                -fx-padding: 15px; -fx-border-radius: 10px; -fx-pref-width: 500px; -fx-pref-height: 150px">
+                    <Label fx:id="fillInQuestionLabelUpdated" text="Fill in the blank:" wrapText="true"
+                           style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+                    <TextField fx:id="fillInAnswerFieldUpdated" promptText="Your answer here"
+                               style="-fx-font-size: 16px; -fx-background-color: white;" />
+                </HBox>
+
+                <!-- Submit Button -->
+                <Button fx:id="submitFillInAnswerButtonUpdated" text="Submit Answer" onAction="#submitFillInAnswerUpdated"
+                        style="-fx-font-size: 16px; -fx-background-color: #66cc66; -fx-text-fill: white; -fx-background-radius: 10px;" />
+
+                <!-- Back Button -->
+                <Button fx:id="backToAgeSelectionButtonUpdated" text="Back to Age Selection" onAction="#showagesection"
+                        style="-fx-font-size: 16px; -fx-background-color: #ff6666; -fx-text-fill: white; -fx-background-radius: 10px;" />
+            </VBox>
+        </VBox>
+
+
+
+        <!-- League Pane -->
+        <VBox fx:id="leaguePane" spacing="20" style="-fx-alignment: center;" visible="false">
+            <Label text="League and Achievements" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+            <HBox spacing="10">
+                <Button text="League" onAction="#showLeagueSection" style="-fx-background-color: #FFAB40; -fx-text-fill: white; -fx-font-size: 16px;" />
+                <Button text="Achievements" onAction="#showAchievementsSection" style="-fx-background-color: #69F0AE; -fx-text-fill: black; -fx-font-size: 16px;" />
+            </HBox>
+
+        </VBox>
+        <VBox fx:id="leaguePane1" spacing="20" style="-fx-alignment: center;" visible="false">
+            <Label text="League Section" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+
+            <!-- Top Players Section -->
+            <Label text="Top Players" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #FF4081;" />
+            <ListView fx:id="topPlayersListView" prefHeight="150" style="-fx-background-color: #FCE4EC; -fx-border-color: #FF4081; -fx-border-width: 2;" />
+
+            <!-- All Players Section -->
+            <Label text="All Players" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #00796B;" />
+            <ListView fx:id="allPlayersListView" prefHeight="150" style="-fx-background-color: #E0F7FA; -fx-border-color: #00796B; -fx-border-width: 2;" />
+        </VBox>
+
+        <!-- Achievements Section -->
+        <VBox fx:id="achievementsPane" spacing="20" style="-fx-alignment: top-center; -fx-background-color: #222233; -fx-padding: 20;" visible="false">
+            <Label text="Trophies" style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #FFD700;" />
+
+            <!-- Achievements List -->
+            <VBox fx:id="achievementsList" spacing="15" style="-fx-alignment: top-left; -fx-background-color: #2C3E50; -fx-padding: 10; -fx-border-color: #34495E; -fx-border-width: 2;">
+
+                <!-- Achievement 1 - Potato Farmer -->
+                <VBox spacing="5" style="-fx-alignment: center-left;">
+                    <Label text="🔒 Potato Farmer" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ddd;" />
+                    <Label text="Collect 10 potato chips on friends' timelines" style="-fx-font-size: 12px; -fx-text-fill: #bbb;" />
+                    <Label text="1/1" style="-fx-font-size: 12px; -fx-text-fill: #aaa;" />
+                </VBox>
+
+                <!-- Achievement 2 - Right on Time -->
+                <VBox spacing="5" style="-fx-alignment: center-left;">
+                    <Label text="✔️ Right on Time" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ddd;" />
+                    <Label text="Collect analysis results within 5 seconds of completion" style="-fx-font-size: 12px; -fx-text-fill: #bbb;" />
+                    <Label text="1/1" style="-fx-font-size: 12px; -fx-text-fill: #aaa;" />
+                </VBox>
+
+                <!-- Achievement 3 - Express Combo -->
+                <VBox spacing="5" style="-fx-alignment: center-left;">
+                    <Label text="✔️ Express Combo" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ddd;" />
+                    <Label text="Find 6 items in less than 5 seconds in a crime scene" style="-fx-font-size: 12px; -fx-text-fill: #bbb;" />
+                    <Label text="1/1" style="-fx-font-size: 12px; -fx-text-fill: #aaa;" />
+                </VBox>
+
+                <!-- Achievement 4 - Practice Makes Perfect -->
+                <VBox spacing="5" style="-fx-alignment: center-left;">
+                    <Label text="🔒 Practice Makes Perfect" style="-fx-font-size: 18px; -fx-font-weight: bold; -fx-text-fill: #ddd;" />
+                    <Label text="Complete 5 practice sessions" style="-fx-font-size: 12px; -fx-text-fill: #bbb;" />
+                    <Label text="1/1" style="-fx-font-size: 12px; -fx-text-fill: #aaa;" />
+                </VBox>
+            </VBox>
+        </VBox>
+
+        <!-- chat Pane -->
+        <VBox fx:id="chatPane" spacing="20" style="-fx-alignment: center;" visible="false">
+            <HBox spacing="10">
+                <Button fx:id="chatButton1" text="Chat" onAction="#showChatSection" style="-fx-background-color: #FFAB40; -fx-text-fill: white; -fx-font-size: 16px;" />
+                <Button fx:id="addFriendButton" text="Add Friends" onAction="#showAddFriendsSection" style="-fx-background-color: #FF4081; -fx-text-fill: white; -fx-font-size: 16px;" />
+                <Button fx:id="friendsListButton" text="Friends List" onAction="#showFriendsListSection" style="-fx-background-color: #69F0AE; -fx-text-fill: white; -fx-font-size: 16px;" />
+            </HBox>
+
+            <!-- Dynamic Content Area -->
+            <StackPane fx:id="contentArea" style="-fx-background-color: #FFFFFF; -fx-padding: 20;">
+                <!-- Chat Section -->
+                <VBox fx:id="chatContainer" spacing="10" visible="false">
+                    <Label text="Chat Section" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+                    <ListView fx:id="messageListView" prefHeight="300" style="-fx-background-color: #F1F8E9;" />
+                    <HBox spacing="10">
+                        <TextField fx:id="messageInputField" promptText="Type your message here..." style="-fx-pref-width: 300;" />
+                        <Button text="Send" onAction="#sendMessage" style="-fx-background-color: #FFCA28; -fx-text-fill: black;" />
+                    </HBox>
+                </VBox>
+
+                <!-- Add Friends Section -->
+                <VBox fx:id="addFriendContainer" spacing="10" visible="false">
+                    <Label text="Add Friends Section" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+                    <TextField fx:id="friendNameInputField" promptText="Enter friend's name..." style="-fx-pref-width: 300;" />
+                    <Button text="Add Friend" onAction="#addFriend" style="-fx-background-color: #FFAB40; -fx-text-fill: white;" />
+                    <Label fx:id="addFriendResultLabel" text="" style="-fx-font-size: 14px; -fx-text-fill: green;" />
+                </VBox>
+
+                <!-- Friends List Section -->
+                <VBox fx:id="friendsListContainer" spacing="10" visible="false">
+                    <Label text="Friends List Section" style="-fx-font-size: 20px; -fx-font-weight: bold;" />
+                    <ListView fx:id="friendsListView" prefHeight="300" style="-fx-background-color: #F1F8E9;" />
+                    <Button text="Chat with Selected Friend" onAction="#chatWithSelectedFriend" style="-fx-background-color: #69F0AE; -fx-text-fill: black;" />
+                </VBox>
+            </StackPane>
+        </VBox>
+
+        <!-- Help & Support Pane -->
+        <VBox fx:id="helpPane" spacing="80" style="-fx-alignment: center;" visible="false">
+            <!-- Title -->
+            <VBox spacing="10" alignment="CENTER">
+                <Label text="Need Some Help?" style="-fx-font-size: 22px; -fx-font-weight: bold;"/>
+
+                <!-- Search Bar -->
+                <HBox spacing="10" alignment="CENTER">
+                    <TextField fx:id="searchField" promptText="What are you having trouble with?"
+                               style="-fx-pref-width: 300px; -fx-padding: 8px;"/>
+                    <Button fx:id="getHelpBtn" text="Get Help"
+                            style="-fx-padding: 8px 15px; -fx-background-color: #007BFF; -fx-text-fill: white;"/>
+                </HBox>
+            </VBox>
+            <!-- FAQ & Knowledgebase -->
+
+
+                <!-- FAQ Section -->
+            <VBox spacing="10">
+                <Label text="📌 Frequently Asked Questions" style="-fx-font-weight: bold;"/>
+
+                <Label text="How do I contact support?" style="-fx-font-weight: bold;"/>
+                <Label text="Email us at support@example.com or call +91 1234567890."
+                           wrapText="true" maxWidth="350"/>
+            </VBox>
+
+            <VBox spacing="10">
+                <Label text="Contact Support" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+                <Label text="📧 Email: support@example.com"/>
+                <Label text="📞 Phone: +91 1234567890"/>
+            </VBox>
+            </VBox>
+
+        <!-- profile Pane -->
+        <VBox fx:id="profilePane" spacing="15" style="-fx-padding: 20px; -fx-alignment: center;" visible="false" >
+
+            <!-- Profile Picture -->
+            <ImageView fx:id="profileImage" fitWidth="100" fitHeight="100" style="-fx-border-radius: 50px; -fx-background-radius: 50px;"/>
+
+            <!-- Profile Info -->
+            <VBox spacing="15" style="-fx-padding: 20px; -fx-alignment: center_left;">
+
+                <!-- Name -->
+                <Label text="Name" style="-fx-font-weight: bold;"/>
+                <HBox>
+                    <Label fx:id="nameLabel" text="John" style="-fx-padding: 5px;-fx-border-color: lightgray;-fx-border-width: 0 0 1 0;"/>
+                    <Region style="-fx-border-color: lightgray; -fx-border-width: 0 0 1 0;" HBox.hgrow="ALWAYS"/>
+                </HBox>
+
+                <!-- Surname -->
+                <Label text="Surname" style="-fx-font-weight: bold;"/>
+                <HBox>
+                    <Label fx:id="surnameLabel" text="Doe" style="-fx-padding: 5px;-fx-border-color: lightgray;-fx-border-width: 0 0 1 0;"/>
+                    <Region style="-fx-border-color: lightgray; -fx-border-width: 0 0 1 0;" HBox.hgrow="ALWAYS"/>
+                </HBox>
+
+                <!-- Username -->
+                <Label text="Username" style="-fx-font-weight: bold;"/>
+                <HBox>
+                    <Label fx:id="usernameLabel" text="john_doe" style="-fx-padding: 5px;-fx-border-color: lightgray;-fx-border-width: 0 0 1 0;"/>
+                    <Region style="-fx-border-color: lightgray; -fx-border-width: 0 0 1 0;" HBox.hgrow="ALWAYS"/>
+                </HBox>
+
+                <!-- Gender -->
+                <Label text="Gender" style="-fx-font-weight: bold;"/>
+                <HBox>
+                    <Label fx:id="genderLabel" text="Male" style="-fx-padding: 5px ; -fx-border-color: lightgray;-fx-border-width: 0 0 1 0;"/>
+                    <Region style="-fx-border-color: lightgray; -fx-border-width: 0 0 1 0;" HBox.hgrow="ALWAYS"/>
+                </HBox>
+
+                <!-- Favorite Subjects -->
+                <Label text="Favorite Subjects" style="-fx-font-weight: bold;"/>
+                <HBox>
+                    <Label fx:id="favSubjectsField" text="Maths, English"
+                               style="-fx-border-color: lightgray; -fx-border-width: 0 0 1 0; -fx-padding: 5px;"/>
+                    <Region style="-fx-border-color: lightgray; -fx-border-width: 0 0 1 0;" HBox.hgrow="ALWAYS"/>
+                </HBox>
+            </VBox>
+
+        </VBox>
+
+    </StackPane>
+
+    <!-- Bottom Navigation Bar -->
+    <HBox style="-fx-background-color: #ffffff; -fx-padding: 10px; -fx-alignment: center; -fx-spacing: 30px;"
+          xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml">
+
+        <!-- Home Button with Circular Image -->
+        <Button style="-fx-background-color: transparent; -fx-padding: 5px;" fx:id="homeButton" onAction="#showHome"/>
+
+        <!-- League Button with Circular Image -->
+        <Button style="-fx-background-color: transparent; -fx-padding: 5px;" fx:id="leagueButton" onAction="#showLeague"/>
+
+        <!-- chat Button with Circular Image -->
+        <Button style="-fx-background-color: transparent; -fx-padding: 5px;" fx:id="chatButton" onAction="#showchat"/>
+
+        <!-- Help & Support Button with Circular Image -->
+        <Button style="-fx-background-color: transparent; -fx-padding: 5px;" fx:id="helpButton" onAction="#showHelp"/>
+
+        <!-- profile Button with Circular Image -->
+        <Button style="-fx-background-color: transparent; -fx-padding: 5px;" fx:id="profileButton" onAction="#showprofile"/>
+
+    </HBox>
+
+
+</VBox>

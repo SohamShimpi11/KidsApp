@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.shape.Circle?>
+
+<?import javafx.scene.image.ImageView?>
+<StackPane xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.kidsapplication.AvatarChatController"
+           style="-fx-background-color: transparent;">
+
+    <!-- Avatar Container -->
+    <VBox fx:id="avatarContainer" alignment="CENTER">
+        <!-- Avatar Image View -->
+        <ImageView fx:id="avatarImageView" fitWidth="100" fitHeight="100" preserveRatio="true"/>
+
+        <!-- Speech Bubble -->
+        <VBox fx:id="speechBubble" visible="false" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 10;">
+            <Label fx:id="speechText" wrapText="true" maxWidth="200" style="-fx-font-size: 14px;"/>
+            <HBox alignment="CENTER_RIGHT" spacing="5">
+                <Button fx:id="minimizeButton" text="−" onAction="#handleMinimize" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+                <Button fx:id="closeButton" text="×" onAction="#handleClose" style="-fx-background-color: #f44336; -fx-text-fill: white;"/>
+            </HBox>
+        </VBox>
+    </VBox>
+
+    <!-- Chat Input (Initially Hidden) -->
+    <VBox fx:id="chatInputContainer" visible="false" style="-fx-background-color: white; -fx-background-radius: 10; -fx-padding: 10;">
+        <TextArea fx:id="chatHistory" editable="false" wrapText="true" maxHeight="200" style="-fx-font-size: 14px;"/>
+        <HBox spacing="10" alignment="CENTER">
+            <TextField fx:id="userInput" promptText="Type your message..." style="-fx-font-size: 14px;"/>
+            <Button text="Send" onAction="#handleSendMessage" style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+        </HBox>
+    </VBox>
+</StackPane>
